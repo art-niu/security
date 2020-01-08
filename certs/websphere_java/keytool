@@ -1,0 +1,22 @@
+
+/root/certs/goweekend-root.cert  /root/certs/goweekend-sub.cert
+
+cd /opt/IBM/WebSphere/AppServer/java/8.0/bin
+keytool -import -trustcacerts -file /root/certs/goweekend-root.cert -alias goweekend_root -keystore ../jre/lib/security/cacerts
+keytool -import -trustcacerts -file /root/certs/goweekend-sub.cert -alias goweekend_sub -keystore ../jre/lib/security/cacerts
+keytool -import -trustcacerts -file /root/certs/was-intra-qa.goweekend.ca_cert_new.cert -alias goweekend_intra_qa -keystore ../jre/lib/security/cacerts
+
+keytool -delete -alias ca_goweekend -keystore ../jre/lib/security/cacerts
+keytool -list -v -keystore ../jre/lib/security/cacerts
+
+keytool -import -trustcacerts -file C:\work\cert-was-qa.cer -alias ca_goweekend -keystore ../jre/lib/security/cacerts
+keytool -delete -alias ca_goweekend -keystore ../jre/lib/security/cacerts
+keytool -list -v -keystore ../jre/lib/security/cacerts
+
+keytool -import -trustcacerts -file /root/certs/goweekend-root.cert -alias goweekend_root -keystore goweekend_keystore
+keytool -import -trustcacerts -file /root/certs/goweekend-sub.cert -alias goweekend_sub -keystore goweekend_keystore
+keytool -import -trustcacerts -file /root/certs/was-intra-qa.goweekend.ca_cert_new.cert -alias goweekend_intra_qa -keystore goweekend_keystore
+
+keytool -delete -alias ca_goweekend -keystore ../jre/lib/security/cacerts
+keytool -list -v -keystore goweekend_keystore
+
