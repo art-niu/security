@@ -1,0 +1,7 @@
+### Author: Arthur
+Generate self-signed cert:
+./genSelfCert.sh sales marketing
+
+Generate CSR for Trusted Certificate
+
+./genTrustedCert.sh  finance accounting 
